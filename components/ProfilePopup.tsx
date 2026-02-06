@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useRef, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import {
   User,
@@ -18,14 +18,38 @@ import GeneratingCard from './GeneratingCard';
 
 export default function ProfilePopup() {
   const [isOpen, setIsOpen] = useState(false);
+  const popupRef = useRef<HTMLDivElement>(null);
   const generations = useGenerationStore((state) => state.generations);
   const recentGenerations = generations.slice(0, 5);
   const newestCompletedId = useGenerationStore(
     (state) => state.newestCompletedId
   );
 
+  // Handle click outside to close popup
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (
+        popupRef.current &&
+        !popupRef.current.contains(event.target as Node)
+      ) {
+        setIsOpen(false);
+      }
+    };
+
+    if (isOpen) {
+      // Use setTimeout to avoid immediately closing on the same click that opened it
+      setTimeout(() => {
+        document.addEventListener('mousedown', handleClickOutside);
+      }, 0);
+    }
+
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+    };
+  }, [isOpen]);
+
   return (
-    <div className='relative'>
+    <div className='relative' ref={popupRef}>
       <button
         onClick={() => setIsOpen(!isOpen)}
         className='relative w-[40px] h-[40px] rounded-full transition-all'
@@ -66,15 +90,6 @@ export default function ProfilePopup() {
       <AnimatePresence>
         {isOpen && (
           <>
-            {/* Backdrop */}
-            <motion.div
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              exit={{ opacity: 0 }}
-              onClick={() => setIsOpen(false)}
-              className='fixed inset-0 z-[60]'
-            />
-
             {/* Popup */}
             <motion.div
               initial={{ opacity: 0, y: -10, scale: 0.95 }}
