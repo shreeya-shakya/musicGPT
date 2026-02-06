@@ -69,9 +69,9 @@ You should see:
 ```
 ╔════════════════════════════════════════╗
 ║                                        ║
-║   🎵 MusicGPT Server Running! 🎵      ║
+║   🎵 MusicGPT Server Running! 🎵        ║
 ║                                        ║
-║   ➜  Local:   http://localhost:3000   ║
+║   ➜  Local:   http://localhost:3000    ║
 ║   ➜  WebSocket Ready ✅                ║
 ║                                        ║
 ╚════════════════════════════════════════╝
@@ -95,12 +95,12 @@ npm start
 musicGPT/
 ├── app/
 │   ├── api/generate/route.ts     # Generation REST endpoint
+│   ├── create/page.tsx           # Create music page
 │   ├── globals.css               # Global styles & animations
 │   ├── layout.tsx                # Root layout
-│   └── page.tsx                  # Main "Create" page
+│   └── page.tsx                  # Home/landing page
 ├── components/
 │   ├── EmptyState.tsx            # No generations placeholder
-│   ├── FloatingMusicPlayer.tsx   # Bottom music player
 │   ├── GenerationCard.tsx        # Individual generation display
 │   ├── ProfilePopup.tsx          # Top-right user menu
 │   ├── PromptBox.tsx             # Main input interface ⭐
@@ -115,30 +115,6 @@ musicGPT/
 ├── server.js                     # Custom Next.js + Socket.IO server
 └── tailwind.config.js            # Design system configuration
 ```
-
----
-
-## 🎨 Design Implementation
-
-### Color System (Figma-Matched)
-
-```javascript
-Primary (Orange):  #FF6B2C
-Background:        #000000
-Card Background:   #0F0F0F
-Text Primary:      #FFFFFF
-Text Secondary:    #8E8E93
-Border:            #2C2C2E
-```
-
-### Animation Specifications
-
-| Element               | Animation          | Duration | Easing                       |
-| --------------------- | ------------------ | -------- | ---------------------------- |
-| **Prompt Box Border** | Glow + color shift | 2.5s     | ease-in-out                  |
-| **Generation Card**   | Fade + slide up    | 0.3s     | cubic-bezier(0.4, 0, 0.2, 1) |
-| **Progress Bar**      | Width expansion    | 0.5s     | ease-out                     |
-| **Profile Popup**     | Scale + opacity    | 0.2s     | cubic-bezier(0.4, 0, 0.2, 1) |
 
 ---
 
