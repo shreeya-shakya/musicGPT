@@ -40,7 +40,7 @@ export const useGenerationStore = create<GenerationStore>((set) => ({
           waveform: Array(50)
             .fill(0)
             .map(() => Math.random()),
-          coverUrl: `https://picsum.photos/seed/${Date.now()}-1/400/400`
+          coverUrl: `https://picsum.photos/seed/2026-02-06-1/400/400`
         }
       ]
     }

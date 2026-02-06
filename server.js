@@ -48,7 +48,8 @@ async function simulateGeneration(generationId, prompt) {
     });
   }
 
-  const success = Math.random() > 0.1;
+  const success =
+    Math.random() > 0.1 && !prompt.toLowerCase().includes('error');
 
   if (success) {
     await new Promise((resolve) => setTimeout(resolve, 1000));

@@ -64,12 +64,8 @@ export default function Create() {
       {/* Main Content */}
       <main className='relative flex-1 ml-[200px]'>
         {/* Header */}
-        <div className='fixed top-0 right-0 z-50'>
-          <div className='relative'>
-            <div className='absolute top-4 right-4'>
-              <ProfilePopup />
-            </div>
-          </div>
+        <div className='fixed top-4 right-4 z-50'>
+          <ProfilePopup />
         </div>
 
         {/* Content */}
